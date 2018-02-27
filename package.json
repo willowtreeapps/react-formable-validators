@@ -1,0 +1,33 @@
+{
+  "name": "react-formable-validators",
+  "version": "1.0.0-alpha-1",
+  "description": "Validators for react-formable ",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "yarn && npm run test && tsc",
+    "test": "yarn && jest",
+    "test:watch": "yarn && jest --watchAll"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/jest": "^22.1.3"
+  },
+  "devDependencies": {
+    "jest": "^22.4.2",
+    "prettier": "^1.10.2",
+    "ts-jest": "^22.4.0",
+    "typescript": "^2.7.2"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testPathIgnorePatterns": ["dist"],
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": ["ts", "tsx", "js", "json"],
+    "modulePaths": ["src/", "node_modules"],
+    "moduleDirectories": ["node_modules", "src"]
+  }
+}
