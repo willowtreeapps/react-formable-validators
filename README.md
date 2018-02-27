@@ -6,7 +6,8 @@ A validator in react-formable is any function that takes in a value, some JSON t
 function validator<T>(inputValue: any, formValue: any): T | undefined {}
 ```
 
-**Validators:**
+## Validators:
+
 The validators found in this repo are just convenience functions that we have found usefull. They take in an initial configuration and return a function which then acts as the validator. These can be understood as _"When thehis input's value does not meet this requirement, display this error message"_.
 
 Each of these functions typically take one or two parameters. The first is typically some configuration based on the validator and the second is always the error message you want to display if the validation fails.
@@ -35,3 +36,39 @@ Each of these functions typically take one or two parameters. The first is typic
     * Ensures values are not null, undefiend, or strings passed in have a length.
   * [`matchesField`](https://github.com/willowtreeapps/react-formable-validators/blob/master/src/matchesField.ts#L11)
     * Usefull for when you have a dependency between field values. The input you attach this to must match the field whos name is specified.
+
+## Examples:
+
+```tsx
+import * as React from "react";
+import { Form } from "react-formable";
+import * as validators from "react-formable-validators";
+
+const Component = () => (
+  <Form onSubmit={console.log}>
+    <input
+      name="firstName"
+      validators={[validators.required("a first name is required")]}
+    />
+
+    <input
+      name="lastName"
+      validators={[validators.required("a last name is required")]}
+    />
+
+    <input
+      name="email"
+      type="email"
+      validators={[validators.email("an email is required")]}
+    />
+
+    <input
+      name="phone"
+      type="tel"
+      validators={[
+        validators.lengthEQ(7, "a phone number of 7 digits is requierd")
+      ]}
+    />
+  </Form>
+);
+```
